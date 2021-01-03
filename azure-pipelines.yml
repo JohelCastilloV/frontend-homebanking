@@ -28,14 +28,14 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        containerRegistry: ${containerRegistry}
-        repository: ${imageRepository}
+        containerRegistry: $(containerRegistry)
+        repository: $(imageRepository)
         command: 'build'
         Dockerfile: '${dockerfilePath}'
-        arguments: '--build-arg API_URL=${API_URL}  --build-arg  GOOGLE_MAP_KEY=${GOOGLE_MAP_KEY}'
+        arguments: '--build-arg API_URL=$(API_URL)  --build-arg  GOOGLE_MAP_KEY=$(GOOGLE_MAP_KEY)'
     
     - task: Docker@2
       inputs:
-        containerRegistry: ${containerRegistry}
-        repository: '${imageRepository}'
+        containerRegistry: $(containerRegistry)
+        repository: $(imageRepository)
         command: 'push'
