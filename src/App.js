@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react';
+import ATMPlaces from './components/ATMPlaces'
+import CurrencyConvertor from './components/CurrencyConvertor'
+import Navbar from 'react-bootstrap/Navbar'
+export default function App() {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const handleClick = () => {
+    ref.current.getCurrentPosition();
+  };
+
+  const ref = useRef(null);
+    return (
+      <div>
+      <Navbar className="justify-content-center" bg="light">
+    <Navbar.Brand>Home Banking</Navbar.Brand>
+    <button onClick={handleClick} ><img src="https://img.icons8.com/fluent/48/000000/map-marker.png" alt="gps"/></button>
+  </Navbar>
+     <CurrencyConvertor/> 
+      <ATMPlaces ref={ref}/>
     </div>
-  );
-}
-
-export default App;
+    );
+  };
